@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div>
+        <p>Your file was downloaded..</p>
+        <button mat-raised-button (click)="openBottomSheet()">Open file</button>
+      </div>
+      <div>
+        <ol>
+          <li>
+            <mat-form-field>
+              <input matInput [(ngModel)]="name" placeholder="What's your name?">
+            </mat-form-field>
+          </li>
+          <li>
+            <button mat-raised-button (click)="openDialog()">Pick one</button>
+          </li>
+          <li *ngIf="cricket">
+            You chose: <i>{{cricket}}</i>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div>
+        <button mat-button (click)="openInstallDialog()">Open Install Dialog</button> <br>
+      </div> <br>
+      <div>
+        <mat-form-field>
+            <input matInput value="Disco party!" placeholder="Message" #message>
+          </mat-form-field>         
+          <mat-form-field>
+            <input matInput value="Dance" placeholder="Action" #action>
+          </mat-form-field>          
+          <button mat-button (click)="openSnackBar(message.value, action.value)">Show Snack-Bar</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div> <br>
+      <button mat-raised-button
+        matTooltip="Info about the action"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+        Tooltip
+      </button>
+    </div>  
+    <div> <br>
+      <mat-form-field class="example-user-input">
+        <mat-select placeholder="Tooltip position" [formControl]="position">
+          <mat-option *ngFor="let positionOption of positionOptions" [value]="positionOption">
+            {{positionOption}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+          
+      <button mat-raised-button
+        matTooltip="Info about the action"
+        [matTooltipPosition]="position.value"
+        aria-label="Button that displays a tooltip in various positions">
+        Tooltip All Options
+      </button>         
+    </div>
+    <div class="col-md-6">
+      <mat-paginator [length]="100"
+        [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+
