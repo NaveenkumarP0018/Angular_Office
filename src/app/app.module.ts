@@ -1,55 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
-import { DemoMaterialModule } from './material';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { LayoutComponent } from './layout/layout.component';
-import { BtnsIndicatorsComponent } from './btns-indicators/btns-indicators.component';
-import { ModalsComponent } from './modals/modals.component';
-import { BottomSheetComponent } from './modals/bottom-sheet/bottom-sheet.component';
-import { DialogComponent } from './modals/dialog/dialog.component';
-import { DialogInstallComponent } from './modals/dialog-install/dialog-install.component';
-import { DataTablesComponent } from './data-tables/data-tables.component';
-
-
-
-const routes: Routes = [
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'layout', component: LayoutComponent},
-  {path: 'btnIndicator', component: BtnsIndicatorsComponent},
-  {path: 'modals', component: ModalsComponent},
-  {path: 'dataTables', component: DataTablesComponent}
-]
+import { AllMaterialModule } from './material';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EditComponent } from './edit/edit.component';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
-    LoginComponent,
-    LayoutComponent,
-    BtnsIndicatorsComponent,
-    ModalsComponent,
-    BottomSheetComponent,
-    DialogComponent,
-    DialogInstallComponent,
-    DataTablesComponent,
+    EditComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    DemoMaterialModule,
+    HttpClientModule,
+    AllMaterialModule,
     FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    MatDialogModule
   ],
-  providers: [],
+  providers: [ { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }],
   bootstrap: [AppComponent],
-  entryComponents: [BottomSheetComponent, DialogComponent, DialogInstallComponent, DataTablesComponent]
+  entryComponents: [EditComponent, CreateComponent]
 })
 export class AppModule { }

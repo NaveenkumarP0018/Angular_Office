@@ -1,18 +1,25 @@
-nav {
-    color: white;
+mat-form-field {
+    width: 100%;
 }
-nav ul {
-    list-style: none;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
+table {
+    width: 100%;
 }
-nav ul li {
-    display: inline-block;
-    margin: 10px 15px;
+.edit {
+    position: relative;
+    left: 200px;
+    cursor: pointer;
+    color: blue;
 }
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 25px;
+.delete {
+    position: relative;
+    left: 250px;
+    cursor: pointer;
+    color: red;
+}
+.add {
+    position: relative;
+    left: 62%;
+    top: 42px;
+    cursor: pointer;
+    color: green;
 }
