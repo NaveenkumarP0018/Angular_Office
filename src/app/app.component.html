@@ -1,44 +1,172 @@
-<!-- <ul>
-    <li *ngFor="let user of users">{{ user.name }}</li>
-</ul> -->
-
-
-<mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
-  
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
-        
-        <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
-        
-        <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} 
-            <mat-icon class="edit" (click)="openDialogEdit(element)">create</mat-icon> 
-            <mat-icon class="delete" (click)="delete(element)">delete</mat-icon>
-        </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-    <mat-icon class="add" (click)="openDialogCreate()">person_add</mat-icon> 
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons></mat-paginator>
+<div>
+    <ul>
+      <li><a routerLink="form">Form</a></li>
+        <li><a routerLink="login">LogIn</a></li>
+        <li><a routerLink="dropdown">dropdown</a></li>
+        <li><a routerLink="expansion">Expansion</a></li>
+        <li><a routerLink="tree">Tablesort</a></li>
+        <li><a routerLink="selection">selection</a></li>
+        <li><a routerLink="curd">TableData</a></li>
+        <li><a routerLink="http">HttpTableData</a></li>
+        <li><a routerLink="adhar">AdharDropdown</a></li>
+        <li><a routerLink="card">MatCard</a></li>
+    </ul>
 </div>
 
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div style="text-align:center ">
+  <h1>
+    Welcome to {{ title }}
+  </h1>
+
+<div>
+<mat-form-field>
+  <input type="text" matInput [formControl]="myControl">
+</mat-form-field>
+</div>
+<mat-form-field>
+    <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+  </mat-form-field>
+  </div>
+ <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+  </mat-autocomplete>
+
+   -->
+    <!-- <div style="text-align:center;color: brown ">
+      <h1>
+        Welcome to {{ title }}
+      </h1>
+    </div> -->
+
+     
+     <!-- <mat-form-field>
+        <input matInput placeholder="FirstName" #name>
+      </mat-form-field>
+      <p>{{name.value.length}}</p> -->
+      <!-- <mat-form-field>
+        <input matInput placeholder="FirstName" [(ngModel)]="name">
+      </mat-form-field>
+      <h6>No Of The Words::</h6>{{name.length}}
+      <mat-form-field>
+        <input matInput placeholder="LastName">
+      </mat-form-field>
+          
+            <mat-form-field>
+              <mat-select placeholder="Educational Qualifications">
+                <mat-option value="option">Select Any One</mat-option>
+                <mat-option value="option">Mca</mat-option>
+                <mat-option value="option">Mba</mat-option>
+                <mat-option value="option">B-tech</mat-option>
+                <mat-option value="option">Degree</mat-option>
+              </mat-select>
+            </mat-form-field>
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Date Of Birth">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+      </div>
+      <label><h4>Gender:</h4></label>
+   <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="1">Male</mat-radio-button>
+      <mat-radio-button value="2">Female</mat-radio-button>
+    </mat-radio-group>
+   <div class="example-container">
+      <mat-form-field>
+          <mat-select placeholder="Hobbies">
+            <mat-option value="option">Select Any One</mat-option>
+            <mat-option value="option">Cricket</mat-option>
+            <mat-option value="option">FootBall</mat-option>
+            <mat-option value="option">VollyBall</mat-option>
+            <mat-option value="option">ReadingBooks</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Address"></textarea>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="MobileNumber">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="EmailId">
+              </mat-form-field>
+
+
+              <mat-form-field>
+                  <textarea matInput placeholder="Achevements"></textarea>
+                </mat-form-field>
+
+          <mat-checkbox #isChecked>I Accept All The Condition</mat-checkbox>
+          <button style="margin:3%" mat-raised-button color="primary" [disabled]="!isChecked.checked">Register</button>
+        
+
+</div>
+</mat-card>
+</div> -->
+
+
+<!-- <mat-select placeholder="Country"><mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+   <mat-option> <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+      <button mat-icon-button disabled></button>
+      {{node.name}}
+    </mat-tree-node>
+  </mat-option>
+    <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+      <button mat-icon-button matTreeNodeToggle
+              [attr.aria-label]="'toggle ' + node.name">
+        <mat-icon class="mat-icon-rtl-mirror">
+          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        </mat-icon>
+      </button>
+      {{node.name}}
+    </mat-tree-node>
+  </mat-tree>
+</mat-select> -->
+
+
+
+<!-- <mat-form-field>
+    <mat-select placeholder="Country">
+      <mat-option value="option">Select Your Country</mat-option>
+      <mat-option value="option">India</mat-option>
+      <mat-option value="option">America</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+<!-- <form [formGroup]="sampleForm">
+  <mat-form-field>
+    <mat-select placeholder="select Country" formControlName="country"  (selectionChange)="onCountrySelection($event.target.value)">
+      <mat-option *ngFor="let country of coutryData" [value]="country.countryId">{{country.countryName}}</mat-option>
+      </mat-select>
+      </mat-form-field>
+    </form> -->
+
+<!-- <app-dropdown></app-dropdown> -->
+<!-- <app-login></app-login> -->
+<!-- <app-expansion></app-expansion> -->
+<!-- <app-tree></app-tree> -->
+<!-- <app-selectiontable></app-selectiontable> -->

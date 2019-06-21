@@ -1,0 +1,22 @@
+<mat-icon class="add" (click)="openDialogCreate()">add</mat-icon> 
+<div *ngFor="let user of users">
+  <div>
+<mat-card class="example-card">
+  <mat-card-header >
+    <mat-card-title>{{user.position}}
+        <button mat-button [matMenuTriggerFor]="menu"><mat-icon class="edit">more-horiz</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="openDialogEdit(user)">edit</button>
+          <button mat-menu-item (click)="openDialogDetails(user)">details</button>
+        </mat-menu>
+
+      <!-- <mat-icon class="edit" (click)="openDialogEdit(user)">more-horiz</mat-icon>
+      <mat-icon class="details" >expand_more</mat-icon> -->
+    </mat-card-title>
+    <mat-card-subtitle>{{user.name}} 
+      <br>{{user.weight}}<br>{{user.symbol}}
+    </mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+</div>
+</div>

@@ -1,0 +1,32 @@
+<form [formGroup]="SampleForm">
+  <div>
+  <mat-form-field class="example-full-width">
+      <mat-select placeholder="select Country" formControlName="country" (selectionChange)="onSelectCountry()">
+        <mat-option *ngFor="let c of countrylist" [value]="c.id">{{c.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+<div>
+    <mat-form-field class="example-full-width">
+        <mat-select placeholder="Select State" formControlName="state" (selectionChange)="onSelectState()">
+        <mat-option *ngFor="let state of states" [value]="state.stateId">{{state.stateName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  <div>
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="select city" formControlName="city" (selectionChange)="onSelectCity()">
+          <mat-option *ngFor="let cit of cities" [value]="cit.cityId">{{cit.cityName}}</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+    </div>
+  <div>
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="select village" formControlName="village">
+          <mat-option *ngFor="let vill of villages" [value]="vill.villId">{{vill.villName}}</mat-option>
+
+        </mat-select>
+      </mat-form-field>
+    </div>
+    </form>

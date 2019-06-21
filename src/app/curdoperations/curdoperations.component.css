@@ -1,0 +1,21 @@
+table{
+    width:100%;
+}
+.edit{
+    position:relative;
+    left:200px;
+    cursor: pointer;
+    color: blue
+}
+.delete{
+    position: relative;
+    left:400px;
+    cursor: pointer;
+    color: red;
+}
+.create{
+    position: relative;
+    left: 62%;
+    cursor: pointer;
+    color: green;
+}

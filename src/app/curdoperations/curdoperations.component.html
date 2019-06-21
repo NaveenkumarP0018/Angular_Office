@@ -1,0 +1,34 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let e"> {{e.position}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let e"> {{e.name}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let e"> {{e.weight}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol 
+          <mat-icon class="create" (click)="createdata()">person_add</mat-icon> 
+      </th>
+      <td mat-cell *matCellDef="let e"> {{e.symbol}}
+      <mat-icon class="edit" (click)="editdata()">create</mat-icon>  
+      <mat-icon class="delete" (click)="delete()">delete</mat-icon>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

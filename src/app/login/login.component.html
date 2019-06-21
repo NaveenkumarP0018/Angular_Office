@@ -1,43 +1,75 @@
-
-<div class="container">
-  <mat-toolbar color="accent">
-    <h3 class="text-center-top">Login Form</h3>
-  </mat-toolbar>
-  <mat-card>
-    <div class="row">
-      <div class="col-md-8">
-        <mat-card-content>
-          <form [formGroup]="loginForm" (ngSubmit)="loginDetails()">
-            <div class="example-container">
-              <mat-form-field>
-                <input matInput placeholder="Enter your email" formControlName="email" required>
-                <mat-error *ngIf="loginForm.controls.email.required">You must enter a value</mat-error>
-                <mat-error *ngIf="loginForm.controls.email.invalid">Not a valid email</mat-error>
-              </mat-form-field>
-            </div>
-            <div class="example-container">
-              <mat-form-field>
-                <input matInput placeholder="Enter your password" formControlName="password" required minlength="5" [type]="hide ? 'password' : 'text'">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-                <mat-error *ngIf="loginForm.controls.email.invalid">Password at least 5 characters</mat-error>
-              </mat-form-field>
-            </div>
-            <div>
-              <mat-checkbox #isok>Do You Want Save Email and Password</mat-checkbox>
-            </div>
-            <div>
-              <button type="submit" mat-raised-button color="primary" [disabled]="!loginForm.valid">LogIn</button>
-            </div>
-          </form>
-        </mat-card-content>
+<mat-card class="example-card">
+  <div class="example-container">
+    <form [formGroup]="loginform">
+      <div>
+        <mat-form-field>
+        <input matInput placeholder="Firstname" formControlName="name" required>
+      </mat-form-field>
       </div>
-      <div class="col-md-2">
-        <img src="https://images.unsplash.com/photo-1530878955558-a6c31b9c97db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" alt="login Image" width="350px" height="200px">
+      <div>
+        <mat-form-field>
+        <input matInput placeholder="email" formControlName="email" required>
+        <mat-error *ngIf="loginform.controls.email.required">
+          you must entered a value
+        </mat-error>
+        <mat-error *ngIf="loginform.controls.email.invalid">
+          Not a valid email
+        </mat-error>
+        </mat-form-field>
       </div>
+      <div>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" formControlName="password"
+         [type]="hide ? 'password' : 'text'" minlength="5" 
+        required>
+         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          
+        <mat-error *ngIf="loginform.controls.password.invalid">
+            please Enter Valid password
+          </mat-error>
+      </mat-form-field>
     </div>
+    <div>
+      <mat-form-field class="example-full-width">
+      <mat-select placeholder="Qualification" formControlName="qualification" required>
+        <mat-option *ngFor="let qulify of qualification" [value]="qulify">{{qulify}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+    <div>
+      <mat-form-field>
+        <textarea matInput placeholder="Address" formControlName="address" minlength="4" required></textarea>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="city" formControlName="city" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+      <input matInput placeholder="State" formControlName="State" required>
+    </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Pincode" #postal formControlName="postal" maxlength="6" required>
+        {{postal.value.length}}/6
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-checkbox #isChecked>Accept Terms and Conditions..</mat-checkbox>
+    </div>
+    <div>
+        <button mat-raised-button [disabled]="!loginform.valid || !isChecked.checked" (click)="getdata($event)" >Register</button>
+      </div>
+    </form>
+  </div>
   </mat-card>
-</div>
-
-
+  {{ name }}<br>
+  {{ email }}<br>
+  {{password}}<br>
+  {{qualification}}<br>
+  {{city}}<br>

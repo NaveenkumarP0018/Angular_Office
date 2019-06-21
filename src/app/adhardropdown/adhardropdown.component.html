@@ -1,0 +1,35 @@
+
+<mat-form-field>
+  <mat-select placeholder="Add Card Details" (selectionChange)='carddetails($event.value)'>
+    <mat-option value="option">Select Any One</mat-option>
+    <mat-option value="Adhar">Adhar</mat-option>
+    <mat-option value="pan">Pan</mat-option>
+    <mat-option value="Vote">Vote</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div *ngIf='adha'>
+  <mat-form-field>
+    <input matInput placeholder="adharcard number">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="enter u name as per adharcard details">
+  </mat-form-field>
+  <button mat-raised-button >submit</button>
+</div>
+<div *ngIf='panca'>
+  <mat-form-field>
+    <input matInput placeholder="enter u r pan number">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="enter u r name as per pancard">
+  </mat-form-field>
+</div>
+<div *ngIf='vote'>
+  <mat-form-field>
+    <input matInput placeholder="enter u r voterId">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="enter u r Date Of Birth as per voter id ">
+  </mat-form-field>
+</div>

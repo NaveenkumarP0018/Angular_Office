@@ -1,0 +1,17 @@
+.example-card{
+    width: 300px;
+    margin: 2rem;
+    float: left;
+    background:lightgray;
+}
+.edit{
+    color: green;
+}
+.details{
+    color:red;
+    padding: 2rem;
+}
+.add{
+    float: right;
+
+}
