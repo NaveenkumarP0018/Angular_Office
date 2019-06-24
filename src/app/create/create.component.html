@@ -1,20 +1,35 @@
 <div mat-dialog-content>
-    <h3 class="text-center text-primary">Create Your Row</h3>
-    <mat-form-field>
-      <input matInput [(ngModel)]="position" placeholder="Enter Position No">
+  <h6 class="text-center text-primary">create a new Row</h6>
+  <form [formGroup]="login">
+   <mat-form-field>
+    <input matInput formControlName="position"  placeholder="Enter Position No" required>
+    <mat-error *ngIf="login.controls.position.invalid">
+      this is invalid
+    </mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <input matInput [(ngModel)]="name" placeholder="Enter Name">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput [(ngModel)]="weight" placeholder="Enter Weight">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput [(ngModel)]="symbol" placeholder="Enter Symbol">
-    </mat-form-field>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancel</button>
-    <button class="ml-5 text-right text-success" mat-button [mat-dialog-close]="1" cdkFocusInitial>Create</button>
-  </div>
+  <mat-form-field>
+    <input matInput formControlName="name"  placeholder="Enter Name" minlength="4" required>
+    <mat-error *ngIf="login.controls.name.invalid">
+      this is invalid
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="weight" placeholder="Enter Weight" required>
+    <mat-error *ngIf="login.controls.weight.invalid">
+     this is invalid
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="symbol" placeholder="Enter Symbol" required>
+    <mat-error *ngIf="login.controls.symbol.invalid">
+      this is invalid
+    </mat-error>
+  </mat-form-field>
+</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <!-- {{login.value | json}} -->
+  <button class="ml-5 text-right text-success"  [disabled]="!login.valid" mat-button [mat-dialog-close]="login.value" (click)="getdata($event)"  cdkFocusInitial>Create</button>
+</div>
 

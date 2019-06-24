@@ -1,6 +1,7 @@
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { User } from '../app.component'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -8,12 +9,20 @@ import { User } from '../app.component'
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-
+   login:FormGroup;
+   positionAuto:number;
   constructor(
     public dialogRef: MatDialogRef<CreateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: User) {
-
-  }
+    @Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder) {
+      this.positionAuto=data;
+      this.login=this.fb.group({
+        position:[null,[Validators.required,Validators.pattern('^[0-9]+$')]],
+        name:[null,[Validators.required,Validators.pattern('^[a-zA-Z-]+$'),Validators.minLength(4)]],
+        weight:[null,[Validators.required,Validators.pattern('^[0-9]+$')]],
+        symbol:[null,[Validators.required,Validators.pattern('^[A-Z]'),Validators.maxLength(1)]]
+      });
+      this.login.get('position').setValue(this.positionAuto);
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -21,5 +30,8 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
   }
+getdata(){
+  console.log(this.login);
+}
 
 }
