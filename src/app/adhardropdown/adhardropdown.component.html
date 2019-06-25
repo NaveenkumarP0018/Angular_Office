@@ -1,4 +1,3 @@
-
 <mat-form-field>
   <mat-select placeholder="Add Card Details" (selectionChange)='carddetails($event.value)'>
     <mat-option value="option">Select Any One</mat-option>
@@ -7,29 +6,56 @@
     <mat-option value="Vote">Vote</mat-option>
   </mat-select>
 </mat-form-field>
-
+<form [formGroup]="idproof">
 <div *ngIf='adha'>
+  <div>
   <mat-form-field>
-    <input matInput placeholder="adharcard number">
+    <input matInput placeholder="adharcard number" minlength="5" maxlength="12" formControlName="adharNumber">
+    <mat-error *ngIf="idproof.controls.adharNumber.invalid">invalid number</mat-error>
   </mat-form-field>
+  </div>
+  <div>
   <mat-form-field>
-    <input matInput placeholder="enter u name as per adharcard details">
+    <input matInput placeholder="enter u name as per adharcard details" formControlName="adharDetails">
+    <mat-error *ngIf="idproof.controls.adharDetails.invalid">Please mention the correct name</mat-error>
   </mat-form-field>
-  <button mat-raised-button >submit</button>
+  </div>
+  <button mat-raised-button [disabled]="!idproof.valid" >submit</button>
 </div>
+</form>
+<form [formGroup]="idproof1">
 <div *ngIf='panca'>
+  <div>
   <mat-form-field>
-    <input matInput placeholder="enter u r pan number">
+    <input matInput placeholder="enter u r pan number" formControlName="panNo">
+    <mat-error *ngIf="idproof1.controls.panNo.invalid">invalid number</mat-error>
+
   </mat-form-field>
+  </div>
+  <div>
   <mat-form-field>
-    <input matInput placeholder="enter u r name as per pancard">
+    <input matInput placeholder="enter u r name as per pancard" formControlName="panName">
+    <mat-error *ngIf="idproof1.controls.panName.invalid">please enter valid name</mat-error>
+
   </mat-form-field>
+  </div>
+  <button mat-raised-button [disabled]="!idproof1.valid">submit</button>
 </div>
+</form>
+<form [formGroup]="idproof2">
 <div *ngIf='vote'>
+  <div>
   <mat-form-field>
-    <input matInput placeholder="enter u r voterId">
+    <input matInput placeholder="enter u r voterId" formControlName="voteNo">
+    <mat-error *ngIf="idproof2.controls.voteNo.invalid">invalid number</mat-error>
   </mat-form-field>
+  </div>
+  <div>
   <mat-form-field>
-    <input matInput placeholder="enter u r Date Of Birth as per voter id ">
+    <input matInput placeholder="enter u r Date Of Birth as per voter id " formControlName="dob">
+    <mat-error *ngIf="idproof2.controls.dob.invalid">invalid</mat-error>
   </mat-form-field>
+  </div>
+  <button mat-raised-button [disabled]="!idproof2.valid">submit</button>
 </div>
+</form>
