@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-//import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { ExpansionComponent } from './expansion/expansion.component';
@@ -21,15 +21,11 @@ import { CreateComponent } from './matcard/create/create.component';
 import { EditComponent } from './matcard/edit/edit.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DetailsComponent } from './matcard/details/details.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { HomeComponent } from './authentication/home';
-import { AuthGuard } from './authentication/_guards';
-import { RegisterComponent } from './authentication/register';
-import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './authentication/_helpers';
-import { LoginComponent } from './authentication/login';
+import { HttpgetdataComponent } from './httpgetdata/httpgetdata.component';
+import { ApicallsComponent } from './apicalls/apicalls.component';
  
 const routes=[
-  //{path:'login',component:LoginComponent},
+  {path:'login',component:LoginComponent},
   {path:'dropdown',component:DropdownComponent},
   {path:'expansion',component:ExpansionComponent},
   {path:'tree',component:TreeComponent},
@@ -39,16 +35,13 @@ const routes=[
   {path:'http',component:HttpTableComponent},
   {path:'adhar',component:AdhardropdownComponent},
   {path:'card',component:MatcardComponent},
-  //{path:'authentication',component:AuthenticationComponent},
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  {path:'httpGetcall',component:HttpgetdataComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    //LoginComponent,
+    LoginComponent,
     DropdownComponent,
     ExpansionComponent,
     TreeComponent,
@@ -61,7 +54,8 @@ const routes=[
     CreateComponent,
     EditComponent,
     DetailsComponent,
-    AuthenticationComponent,HomeComponent,RegisterComponent,LoginComponent
+    HttpgetdataComponent,
+    ApicallsComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,12 +70,7 @@ const routes=[
       EditComponent,
       DetailsComponent
     ],
-    providers: [
-      { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-      // provider used to create fake backend
-      fakeBackendProvider
-  ],  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
