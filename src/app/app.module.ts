@@ -23,6 +23,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DetailsComponent } from './matcard/details/details.component';
 import { HttpgetdataComponent } from './httpgetdata/httpgetdata.component';
 import { ApicallsComponent } from './apicalls/apicalls.component';
+import { HttpgetIdComponent } from './httpget-id/httpget-id.component';
+import { HttpmatcardComponent } from './httpmatcard/httpmatcard.component';
  
 const routes=[
   {path:'login',component:LoginComponent},
@@ -35,7 +37,9 @@ const routes=[
   {path:'http',component:HttpTableComponent},
   {path:'adhar',component:AdhardropdownComponent},
   {path:'card',component:MatcardComponent},
-  {path:'httpGetcall',component:HttpgetdataComponent}
+  {path:'httpGetcall',component:HttpgetdataComponent},
+  {path:'httpgetonlyid',component:HttpgetIdComponent},
+  {path:"httpmatcard",component:HttpmatcardComponent}
 ]
 
 @NgModule({
@@ -56,6 +60,8 @@ const routes=[
     DetailsComponent,
     HttpgetdataComponent,
     ApicallsComponent,
+    HttpgetIdComponent,
+    HttpmatcardComponent,
   ],
   imports: [
     BrowserModule,

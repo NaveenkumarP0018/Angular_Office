@@ -1,0 +1,11 @@
+<mat-form-field>
+  <input matInput [(ngModel)]="alertName" #name placeholder="enter u r name">
+</mat-form-field>
+
+<button mat-raised-button (click)="getiddetails()">submit</button>
+
+<div *ngIf="userid" style="text-align: center;">
+  {{userid.status}}<br>
+  {{userid.message}}
+</div>
+

@@ -23,6 +23,7 @@ export interface RootObject {
 })
 export class HttpgetdataComponent implements OnInit {
   public users:IOrg[];
+  //users;
 
   constructor(private getservices:GetservicesService) { 
     this.getUsers();
@@ -32,6 +33,8 @@ export class HttpgetdataComponent implements OnInit {
     this.getservices.data().subscribe(
       res=>{
       this.users = res['orgs'];
+      console.log(this.users);
+      
       }
     )
   }
