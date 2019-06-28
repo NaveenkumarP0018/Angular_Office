@@ -1,0 +1,30 @@
+<div mat-dialog-content>
+  <h6 class="text-center text-primary">create a new Row</h6>
+  <form [formGroup]="login">
+   <mat-form-field>
+    <input matInput formControlName="interfaceCode"  placeholder="Enter u r interfacecode" required>
+    <mat-error *ngIf="login.controls.interfaceCode.invalid">
+      this is invalid
+    </mat-error>
+    </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="interfaceDesc"  placeholder="Enter u r interfaceDesc" minlength="4" required>
+    <mat-error *ngIf="login.controls.interfaceDesc.invalid">
+      this is invalid
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="interfaceName" placeholder="Enter interfaceName" required>
+    <mat-error *ngIf="login.controls.interfaceName.invalid">
+     this is invalid
+    </mat-error>
+  </mat-form-field>
+
+</form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <!-- {{login.value | json}}  -->
+  <button class="ml-5 text-right text-success"  [disabled]="!login.valid" mat-button [mat-dialog-close]="login.value"   cdkFocusInitial (click)="getpostdata($event)">Create</button>
+</div>
+

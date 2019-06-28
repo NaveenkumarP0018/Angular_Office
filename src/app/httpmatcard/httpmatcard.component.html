@@ -1,8 +1,19 @@
+<!-- <mat-icon class="add" (click)="openDialogCreate()">add</mat-icon> -->
+<div>
+  <button mat-raised-button class="button" (click)="openDialogCreate()" color="primary">Add   
+    <mat-icon>person</mat-icon>
+  </button>
+
+</div> 
+<div>
 <div *ngFor="let user of users; let i=index">
   <div>
 <mat-card class="example-card">
-  <mat-card-header ><b>{{i}}</b>
-    <mat-card-title>id:{{user.interfaceId}}
+  <mat-card-header ><b><u>index:</u>{{i}}</b>
+    <button mat-raised-button  (click)="openDialogEdit(user)">edit
+    
+    </button>
+    <mat-card-title>interfaceId:{{user.interfaceId}}
     </mat-card-title>
     <mat-card-subtitle>
       {{user.interfaceDesc}}<br>
@@ -12,5 +23,6 @@
     </mat-card-subtitle>
   </mat-card-header>
 </mat-card>
+</div>
 </div>
 </div>

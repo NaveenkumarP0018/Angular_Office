@@ -1,0 +1,24 @@
+<div mat-dialog-content>
+    <form [formGroup]="editForm">
+      <h3 class="text-center text-primary">Update Your Row</h3>
+      <mat-form-field>
+        <input matInput formControlName="interfaceCode" placeholder="interfaceCode">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="interfaceDesc" placeholder="interfaceDesc" readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="interfaceId" placeholder="interfaceId">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="interfaceName" placeholder="interfaceName">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="status" placeholder="status">
+      </mat-form-field>
+    </form>  
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button class="ml-5 text-right text-success" mat-button [mat-dialog-close]="editForm.value" cdkFocusInitial>Update</button>
+  </div>

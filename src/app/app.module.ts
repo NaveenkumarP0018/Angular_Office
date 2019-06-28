@@ -25,6 +25,8 @@ import { HttpgetdataComponent } from './httpgetdata/httpgetdata.component';
 import { ApicallsComponent } from './apicalls/apicalls.component';
 import { HttpgetIdComponent } from './httpget-id/httpget-id.component';
 import { HttpmatcardComponent } from './httpmatcard/httpmatcard.component';
+import { CreateDataComponent } from './httpmatcard/create-data/create-data.component';
+import { EditdataComponent } from './httpmatcard/editdata/editdata.component';
  
 const routes=[
   {path:'login',component:LoginComponent},
@@ -62,6 +64,8 @@ const routes=[
     ApicallsComponent,
     HttpgetIdComponent,
     HttpmatcardComponent,
+    CreateDataComponent,
+    EditdataComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +78,9 @@ const routes=[
     entryComponents:[
       CreateComponent,
       EditComponent,
-      DetailsComponent
+      DetailsComponent,
+      CreateDataComponent,
+      EditdataComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

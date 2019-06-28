@@ -68,7 +68,7 @@ export class MatcardComponent implements OnInit {
           x.weight=result.weight;
         }
       
-      });
+      }); 
     }
 });
   }

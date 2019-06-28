@@ -4,3 +4,7 @@
     float: left;
     background:lightgray;
 }
+.button{
+    left:40%;
+    margin: 1rem;
+}
