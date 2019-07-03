@@ -1,0 +1,18 @@
+table{
+    width: 100%;
+}
+p {
+    font-family: 'Times New Roman';
+  }
+  
+  .container {
+    font-size: 16px;
+    line-height: 16px;
+    height: 15px;
+    overflow: hidden;
+    width: 300px;
+  }
+  .show {
+    overflow: visible;
+    height: auto;
+  }
