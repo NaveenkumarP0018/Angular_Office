@@ -1,4 +1,4 @@
-<form [formGroup]="myForm">
+<!-- <form [formGroup]="myForm">
   <mat-form-field>
     <mat-select multiple (selectionChange)="addPhone($event)" formControlName="email">
       <mat-option matInput placeholder="select option"  *ngFor="let data of datas" [value]="data">
@@ -23,9 +23,45 @@
         <input matInput placeholder="line" formControlName="line">
       </mat-form-field>
 
-      <!-- <button mat-raised-button (click)="deletePhone()">Delete</button> -->
+       <button mat-raised-button (click)="deletePhone()">Delete</button> -->
 
-    </div>
+    <!-- </div>
 
   </div>
-</form>
+</form> -->
+
+
+
+
+<!-- <div class="min-time-example">
+  <input placeholder="Min time 03:15 am"
+      [ngxTimepicker]="min" [min]="'03:15 am'" readonly>
+  <ngx-material-timepicker #min></ngx-material-timepicker>
+</div>
+
+<div class="max-time-example">
+  <input placeholder="Max time 06:18 pm"
+      [ngxTimepicker]="max" max="06:18 pm" readonly>
+  <ngx-material-timepicker #max></ngx-material-timepicker>
+</div> -->
+
+<div class="time-range-example">
+  <input placeholder="Time range from 09:10 am to 09:10 pm" [format]="24"
+      [ngxTimepicker]="range" min="09:10 am" max="09:10 pm" readonly>
+  <ngx-material-timepicker #range></ngx-material-timepicker>
+</div>
+
+<div class="col-sm-12 mar-top" *ngIf="_camaDetails.controls.scheduletype.value=='1'">
+    <mat-form-field style="width: 100%;">
+      <mat-placeholder>{{'campaigns.create.scheduleDate' | translate}}</mat-placeholder>
+      <mat-datetimepicker-toggle [for]="end" matSuffix></mat-datetimepicker-toggle>
+      <mat-datetimepicker #end type="datetime"   openOnFocus="true"   timeInterval="1">
+      </mat-datetimepicker>
+      <input formControlName="campSchedule" [min]='today' onkeypress="return (event.charCode == 0)"
+        allow-camp-cal-characters matInput  [matDatetimepicker]="end"  autocomplete="false" readonly required>
+      <mat-error *ngIf="_camaDetails.value.campSchedule!=null &&_camaDetails.controls.campSchedule.errors?.required">
+        {{'campaigns.create.scheduleRequired' | translate}}</mat-error>
+        <mat-error *ngIf="_camaDetails.value.campSchedule <= today">
+          {{'campaigns.create.errortime' | translate}}</mat-error>
+    </mat-form-field>
+  

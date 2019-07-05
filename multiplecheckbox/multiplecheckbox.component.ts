@@ -8,23 +8,23 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 })
 export class MultiplecheckboxComponent implements OnInit {
 
-  myForm: FormGroup;
-  datas=['1','2','3'];
+  // myForm: FormGroup;
+  // datas=['1','2','3'];
  
  
  constructor(private fb: FormBuilder) { }
 
  ngOnInit() {
-  this.myForm = this.fb.group({
-  email: '',
-  phones: this.fb.array([])
- })
+//   this.myForm = this.fb.group({
+//   email: '',
+//   phones: this.fb.array([])
+//  })
  
  }
  
- get phoneForms() {
-  return this.myForm.get('phones') as FormArray
- }
+//  get phoneForms() {
+//   return this.myForm.get('phones') as FormArray
+//  }
  
 //  addPhone() {
  
@@ -37,16 +37,16 @@ export class MultiplecheckboxComponent implements OnInit {
 //   this.phoneForms.push(phone);
 //  }
 
-addPhone(){
-  const phone = this.fb.group({
-    area:[],
-    prefix:[],
-    line:[]
-  })
+// addPhone(){
+//   const phone = this.fb.group({
+//     area:[],
+//     prefix:[],
+//     line:[]
+//   })
   
-  this.phoneForms.push(phone);
+//   this.phoneForms.push(phone);
   
-}
+// }
  
 
 }
