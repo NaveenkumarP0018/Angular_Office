@@ -1,71 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
-// import {FlatTreeControl} from '@angular/cdk/tree';
-// import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-
-export interface IcountryData{
-  countryId:number;
-  countryName:string;
-  stateList:IStateData[];
-}
-export interface IStateData{
-  stateId:number;
-  stateName:string
-}
-interface FoodNode {
-  name: string;
-  children?: FoodNode[];
-}
-
+import { Component } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
- title = 'Login-Form';
- sampleForm:FormGroup;
- loginform:FormGroup;
- myControl= new FormControl();
- options=['one','two','three'];
- name:string="";
- aliesname:string="";
- hide=true;
-coutryData:IcountryData[]=[
-  {countryId:1,countryName:"India",stateList:[
-    {stateId:1,stateName:"Andhra Pradesh"},
-    {stateId:2,stateName:"Telangana"},
-    {stateId:3,stateName:"TamilNadu"}
-  ]},
-  {countryId:2,countryName:"Australia",stateList:[
-    {stateId:1,stateName:"xxx"},
-    {stateId:2,stateName:"asddds"},
-    {stateId:3,stateName:"sdfdf"}
-  ]}
-]
-constructor(private fb:FormBuilder){
-  this.loginform=this.fb.group({
-    Firstname:['',Validators.required],
-    email:['',[Validators.required,Validators.email]],
-    password:['',[Validators.required,Validators.minLength]],
-    dropdown:['',Validators.required],
-    address:['',Validators.required],
-    city:['',Validators.required],
-    State:['',Validators.required],
-    postal:['',Validators.required]
-  })
+export class AppComponent {
+  title = 'sampleproject';
+  OTP = '';
+  enterOtp = "";
+  subscription: Subscription;
+  ngOnInit() {
+    this.generateOtp()
+    const source = interval(5000); 
+    this.subscription = source.subscribe(val => this.generateOtp());
+  }
+  generateOtp() {
+    this.OTP='';
+    var digits = '0123456789';
+    for (let i = 0; i < 4; i++) {
+      this.OTP += digits[Math.floor(Math.random() * 10)];
+    }
+    console.log("otp", this.OTP);
+    // const source = interval(1000); 
+    // this.subscription = source.subscribe(val => this.OTP);
+  }
+  compare() {
+    if (this.OTP == this.enterOtp) {
+      console.log("equal");
+      this.showAlert("equals",'success');
+    }else{
+      this.showAlert("notEquals",'danger')
+    }
+    this.generateOtp();
+  }
+  ngOnDestroy() {
+    this.subscription && this.subscription.unsubscribe();
+  }
+  showAlert(message,className) {
+    var div = document.createElement('div');
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+    var form = document.getElementById('.container');
+    document.body.insertBefore(div, form);
+    setTimeout(() => document.querySelector('.alert').remove(), 3000);
+  }
 }
-onCountrySelection(selectedvalue){
-  console.log("selectedCountry:::",selectedvalue); 
-}
-getdetails(){
-  console.log(this.loginform);
-  
-}
-}
-
-
-
-
-
